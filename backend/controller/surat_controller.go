@@ -36,7 +36,7 @@ func GetSurat(c *gin.Context) {
 }
 
 func CreateSurat(c *gin.Context) {
-	var req = structs.CreateSuratRequest{}
+	var req structs.CreateSuratRequest
 
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusUnprocessableEntity, structs.ErrorResponse{
@@ -46,6 +46,8 @@ func CreateSurat(c *gin.Context) {
 		})
 		return
 	}
+
+	tx := database.DB.Begin()
 
 	surat := model.Surat{
 		NomorSurat:      req.NomorSurat,
@@ -62,11 +64,20 @@ func CreateSurat(c *gin.Context) {
 		TempatId:        req.TempatId,
 	}
 
-	// 🔎 Ambil mahasiswa
-	var Petugas []model.Pegawai
-	if err := database.DB.
-		Where("id IN ?", req.PetugasIds).
-		Find(&Petugas).Error; err != nil || len(Petugas) == 0 {
+	// 1️⃣ Simpan surat dulu
+	if err := tx.Create(&surat).Error; err != nil {
+		tx.Rollback()
+		c.JSON(http.StatusInternalServerError, structs.ErrorResponse{
+			Success: false,
+			Message: "Failed to create surat",
+		})
+		return
+	}
+
+	// 2️⃣ Ambil pegawai
+	var petugas []model.Pegawai
+	if err := tx.Where("id IN ?", req.PetugasIds).Find(&petugas).Error; err != nil || len(petugas) == 0 {
+		tx.Rollback()
 		c.JSON(http.StatusBadRequest, structs.ErrorResponse{
 			Success: false,
 			Message: "Petugas tidak ditemukan",
@@ -74,11 +85,9 @@ func CreateSurat(c *gin.Context) {
 		return
 	}
 
-	// 🔗 Tambahkan relasi
-	if err := database.DB.
-		Model(&surat).
-		Association("Petugas").
-		Append(&Petugas); err != nil {
+	// 3️⃣ Tambahkan relasi ke join table
+	if err := tx.Model(&surat).Association("Petugas").Append(&petugas); err != nil {
+		tx.Rollback()
 		c.JSON(http.StatusInternalServerError, structs.ErrorResponse{
 			Success: false,
 			Message: "Gagal menambahkan petugas ke surat",
@@ -86,14 +95,7 @@ func CreateSurat(c *gin.Context) {
 		return
 	}
 
-	if err := database.DB.Create(&surat).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, structs.ErrorResponse{
-			Success: false,
-			Message: "Failed to create surat",
-			Errors:  helpers.TranslateErrorMessage(err),
-		})
-		return
-	}
+	tx.Commit()
 
 	var response []structs.SuratResponse
 	response = append(response, structs.PetugasSuratRequest(surat))
