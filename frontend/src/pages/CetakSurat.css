@@ -1,0 +1,108 @@
+/* PAGE */
+.cetak-page {
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.cetak-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  color: white;
+  padding: 16px 24px;
+}
+
+.cetak-header .back {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* CARD */
+.cetak-card {
+  background: white;
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+/* ICON */
+.cetak-icon {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 30px;
+}
+
+.cetak-icon p {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* FORM */
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* DATA LIST */
+.data-list {
+  margin-top: 25px;
+}
+
+.data-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  padding: 10px 0;
+}
+
+.data-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.data-value {
+  color: #222;
+}
+
+/* BUTTON */
+.btn-cetak {
+  margin-top: 35px;
+  width: 100%;
+  padding: 14px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cetak-wrapper {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.preview-card {
+  margin-top: 20px;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.row span {
+  color: #777;
+  font-size: 14px;
+}
+
+.row strong {
+  font-weight: 500;
+}

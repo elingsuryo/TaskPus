@@ -1,0 +1,104 @@
+/* list surat */
+.detail-list {
+  max-width: 900px;
+  padding: 24px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.detail-grid label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.detail-grid p {
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* satu baris surat */
+.detail-row {
+  display: grid;
+  grid-template-columns: 260px 20px 1fr;
+  align-items: start;
+  padding: 6px 0;
+}
+
+/* label kiri */
+.detail-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+  text-transform: uppercase;
+}
+
+/* titik dua */
+.detail-separator {
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* value kanan */
+.detail-value {
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* header */
+.detailsurat-header {
+  background: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: white;
+  padding: 16px 24px;
+  font-weight: bold;
+}
+
+/* wrapper */
+.detailsurat-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+.detailsurat-card {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+.detail-header button {
+  background: #9333ea;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* floating button */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #2c7be5;
+  color: #ffffff;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(44, 123, 229, 0.45);
+}

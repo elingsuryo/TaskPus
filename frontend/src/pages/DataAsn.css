@@ -1,0 +1,84 @@
+.dataasn-wrapper {
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.dataasn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  color: white;
+  padding: 16px 24px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.header-actions input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.header-actions button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.header-actions .danger {
+  background: #dc2626;
+  color: white;
+}
+
+.header-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* TABLE */
+.table-container {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  min-width: 1400px;
+}
+
+thead {
+  background: #fafafa;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* FLOAT BUTTON */
+.tambahAsn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #1e293b;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
