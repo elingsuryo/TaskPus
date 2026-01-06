@@ -51,6 +51,12 @@ class LpdController extends Controller
                 $lpd->petugasLain()->attach($request->petugas_lain_ids);
             }
 
+            // Update status surat → Sudah
+        Surat::where('id', $request->surat_id)
+            ->update([
+                'status' => 'Sudah'
+            ]);
+
             return response()->json([
                 'success' => true,
                 'message' => 'LPD created successfully',

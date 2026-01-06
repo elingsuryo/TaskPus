@@ -55,6 +55,8 @@ class SuratController extends Controller
                 'atas_nama',
             ]));
 
+            $data['status'] = "Belum";
+
             $petugas = Pegawai::whereIn('id', $request->petugas_ids)->get();
 
             if ($petugas->isEmpty()) {
