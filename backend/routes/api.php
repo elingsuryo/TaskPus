@@ -16,7 +16,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // User Routes
 Route::Get('/users', [UserController::class, 'getUsers']);
-Route::Post('/users', [UserController::class, 'CreateUsers']);
+Route::Post('/users', [UserController::class, 'CreateUser']);
 Route::Get('/users/{id}', [UserController::class, 'GetUserById']);
 Route::Put('users/{id}', [UserController::class, 'updateUser']);
 Route::Delete('/users/{id}', [UserController::class, 'deleteUser']);
